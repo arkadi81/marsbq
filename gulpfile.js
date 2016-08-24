@@ -13,8 +13,19 @@ var handlebars = require('gulp-compile-handlebars');
 var rename = require('gulp-rename');
 
 gulp.task('templates', function(){
-	return gulp.src(['src/templates/**/*.hbs'])
-		.pipe(handlebars())
+
+	// the data and options vars are for passing to handlebars to handle partials
+
+	var data = {};
+
+	var options = {
+		batch: ['src/templates/partials']
+	}
+
+	return gulp.src(['src/templates/**/*.hbs', '!src/templates/partials/**/*.hbs'])
+	// do not include the partials directory so that 
+	// we dont get individual files output for them
+		.pipe(handlebars(data,options))
 		.pipe(rename(function(path) {
 			path.extname = '.html';
 		}))
