@@ -12,11 +12,19 @@ var imageMin = require('gulp-imagemin');
 var handlebars = require('gulp-compile-handlebars');
 var rename = require('gulp-rename');
 
+// to require local use ./ in front of path
+var menu = require('./menu.json');
+
 gulp.task('templates', function(){
 
 	// the data and options vars are for passing to handlebars to handle partials
 
-	var data = {};
+	var data = {
+		// not a huge fan.. data shouldnt be streamed
+		// from dev gulp file
+		year: new Date().getFullYear(),
+		menu: menu.menuItems
+	};
 
 	var options = {
 		batch: ['src/templates/partials']

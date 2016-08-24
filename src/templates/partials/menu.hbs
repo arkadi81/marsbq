@@ -1,4 +1,15 @@
 <section id="menu">
 	<h2>Menu</h2>
 	<p>Please vote for your fav menu item</p>
+
+	<ul>
+		<!-- iterate over each item in menu -->
+		{{#each menu}}
+			<li data-id="{{id}}">
+				<span class="menu-title">{{title}}</span>
+				<span class="menu-count">{{count}}</span>
+			</li>
+		{{/each}}
+	</ul>
+
 </section>
