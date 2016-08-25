@@ -1,3 +1,25 @@
-console.log('HELLO WORLD');
-console.log('hello again, testing js mini and automation');
-console.log('hiiiii');
+var model ={
+	init: function() {
+		console.log('Model initialized');
+	}
+};
+
+var helper = {
+
+};
+
+var view = {
+	init: function() {
+		console.log('View initialized');
+	}
+};
+
+//app object used to initialize application
+var app = {
+	init: function() {
+		model.init();
+		view.init();
+	}
+};
+
+app.init();
