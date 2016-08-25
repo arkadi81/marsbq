@@ -12,6 +12,8 @@ var imageMin = require('gulp-imagemin');
 var handlebars = require('gulp-compile-handlebars');
 var rename = require('gulp-rename');
 
+var less = require ('gulp-less');
+
 // to require local use ./ in front of path
 var menu = require('./menu.json');
 
@@ -57,8 +59,9 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('styles', function() {
-	gulp.src(['src/styles/**/*.css'])
+	gulp.src(['src/styles/**/main.less'])
 		.pipe(sourcemaps.init())
+		.pipe(less())
 		.pipe(minifyCss())
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest('dist/styles'))
@@ -76,7 +79,7 @@ gulp.task('default', ['styles','images','scripts', 'templates'], function() {
 	});
 	//gulp.watch('src/**/*', browserSync.reload);
 	// on change of css watch styles and activate styles task
-	gulp.watch('src/styles/**/*.css', ['styles']);
+	gulp.watch('src/styles/**/*.less', ['styles']);
 	gulp.watch('src/img/**/*', ['images']);
 	gulp.watch('src/scripts/**/*.js', ['scripts']);
 	gulp.watch('src/templates/**/*.hbs', ['templates']);
