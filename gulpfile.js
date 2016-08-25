@@ -14,10 +14,14 @@ var rename = require('gulp-rename');
 
 var less = require ('gulp-less');
 
+//autoprefixer important to introduce old browser capability to css
+var autoprefixer = require('gulp-autoprefixer');
+
 // to require local use ./ in front of path
 var menu = require('./menu.json');
 
 gulp.task('templates', function(){
+	// used to dump static data into templates and furthedr into index.html
 
 	// the data and options vars are for passing to handlebars to handle partials
 
@@ -62,6 +66,7 @@ gulp.task('styles', function() {
 	gulp.src(['src/styles/**/main.less'])
 		.pipe(sourcemaps.init())
 		.pipe(less())
+		.pipe(autoprefixer())
 		.pipe(minifyCss())
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest('dist/styles'))
