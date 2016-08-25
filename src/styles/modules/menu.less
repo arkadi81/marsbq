@@ -1,3 +1,41 @@
 .menu-container {
 	background: @dark-bg;
 }
+
+.menu-list {
+	li {
+		padding: 4px;
+		margin-bottom: 1em;
+		line-height: 2;
+	}
+
+
+	.menu-title {
+		display: inline-block;
+		width: 70%;
+		font-weight: bold;
+
+	}
+
+	.menu-count {
+		display: inline-block;
+		width: 20%;
+		background: @light-bg;
+		color: @red;
+	}
+
+}
+
+/*apply flex box for small displays */
+@media screen and (min-width: 620px) {
+	.menu-list {
+		margin: 0 auto;
+		display: flex;
+		flex-wrap: wrap; /* this will make each item wrap to next line if media query successful */
+
+		li {
+			width: 31%;
+			margin: 10px 1%;
+		}
+	}
+}
